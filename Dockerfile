@@ -1,13 +1,13 @@
-# Build Stage
-FROM openjdk:17-jdk-slim
+# Use stable Java 17 image
+FROM eclipse-temurin:17-jdk-alpine
+
 WORKDIR /app
 
-# The JAR file is built outside the Docker build process (e.g. by Render or local Maven)
-# and then copied into the image.
+# Copy jar file
 COPY target/*.jar app.jar
 
-# Expose the port the app runs on
+# Expose port
 EXPOSE 8080
 
-# Run the application with optimized JVM flags
-ENTRYPOINT ["java", "-Xms256m", "-Xmx512m", "-Djava.security.egd=file:/dev/./urandom", "-jar", "app.jar"]
+# Run application
+ENTRYPOINT ["java", "-Xms256m", "-Xmx512m", "-jar", "app.jar"]
