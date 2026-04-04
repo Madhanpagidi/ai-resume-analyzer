@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8080/api/v1";
+// Using API_URL from config.js
 
 document.addEventListener("DOMContentLoaded", () => {
     // Tabs switching
@@ -59,8 +59,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     errDiv.textContent = data.message || "Login failed";
                 }
             } catch (err) {
+                console.error("Login Error:", err);
                 errDiv.style.display = 'block';
-                errDiv.textContent = "Network error. Make sure backend is running.";
+                errDiv.textContent = "Network error. Make sure the backend server at " + BASE_URL + " is running.";
             }
         });
     }
@@ -91,8 +92,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     errDiv.textContent = data.message || "Registration failed";
                 }
             } catch (err) {
+                console.error("Registration Error:", err);
                 errDiv.style.display = 'block';
-                errDiv.textContent = "Network error. Make sure backend is running.";
+                errDiv.textContent = "Network error. Make sure the backend server at " + BASE_URL + " is running.";
             }
         });
     }

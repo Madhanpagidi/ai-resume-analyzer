@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8080/api/v1";
+// Using API_URL from config.js
 
 document.addEventListener("DOMContentLoaded", () => {
     
@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         } catch (err) {
             console.error("Upload error details:", err);
-            uploadStatus.innerHTML = `<span style="color:var(--danger)">${err.message}</span>`;
+            uploadStatus.innerHTML = `<span style="color:var(--danger)">${err.message}. (Backend: ${BASE_URL})</span>`;
             btnAnalyze.disabled = false;
             btnAnalyze.innerHTML = 'Analyze Resume';
             
@@ -285,8 +285,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 addChatMessage('ai', "Sorry, I am having trouble connecting to the server.");
             }
         } catch (err) {
+            console.error("Chat error details:", err);
             removeElement(loadingId);
-            addChatMessage('ai', "Hmm, looks like there's a network issue.");
+            addChatMessage('ai', "Hmm, looks like there's a network issue with " + BASE_URL);
         }
         scrollToBottom();
     }
