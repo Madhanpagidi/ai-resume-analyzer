@@ -5,7 +5,7 @@
  */
 
 // Deployment Backend URL (Render)
-const BASE_URL = "https://your-render-url.onrender.com";
+const BASE_URL = "https://ai-resume-analyzer-cev2.onrender.com";
 
 // API Versioned URL
 const API_URL = `${BASE_URL}/api/v1`;
